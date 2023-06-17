@@ -35,3 +35,30 @@ class Member implements Comparable<Member> {
     }
 }
 ```
+
+<br>
+
+#### 11650 - [좌표 정렬하기](https://www.acmicpc.net/problem/11650)
+
+- `클래스 객체`를 만들어 저장한 후 `Collections.sort() 에 Comparator의 compare 메소드` 를 구현하여 정렬할 수도 있다. 
+
+```java
+class Point implements Comparable<Point> {
+    private int x, y;
+}
+
+ArrayList<Point> points = new ArrayList<>();
+for (int i=0; i<N; i++) {
+    int x = in.nextInt();
+    int y = in.nextInt();
+    points.add(new Point(x, y));
+}
+
+Collections.sort(points, new Comparator<Point>() {
+    @Override
+    public int compare(Point o1, Point o2) {
+        if (o1.getX() == o2.getX()) return o1.getY() - o2.getY();
+        return o1.getX() - o2.getX();
+    }
+});
+```
